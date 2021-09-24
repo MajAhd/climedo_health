@@ -1,9 +1,9 @@
-const DepartmentModel = require("../department");
+const Department = require("../department");
 const Logger = require("../../config/logger");
-module.exports = class Department {
+module.exports = class DepartmentModel {
   async all_departments() {
     try {
-      let department = await DepartmentModel.find();
+      let department = await Department.find();
       return {
         result: true,
         data: department,
@@ -18,7 +18,7 @@ module.exports = class Department {
   }
   async get_department(id) {
     try {
-      let department = await DepartmentModel.findById(id);
+      let department = await Department.findById(id);
       return {
         result: true,
         data: department,
@@ -34,7 +34,7 @@ module.exports = class Department {
 
   async get_department_contact(id) {
     try {
-      let department = await DepartmentModel.findById(id).select(["contact_name", "contact_email", "contact_phone"]);
+      let department = await Department.findById(id).select(["contact_name", "contact_email", "contact_phone"]);
       return {
         result: true,
         data: department,
@@ -49,7 +49,7 @@ module.exports = class Department {
   }
   async new_department(name, api_key) {
     try {
-      let department = new DepartmentModel({
+      let department = new Department({
         name: name,
         api_key: api_key,
       });
@@ -68,7 +68,7 @@ module.exports = class Department {
   }
   async update_department(id, name, api_key) {
     try {
-      let department = await DepartmentModel.findByIdAndUpdate(id, {
+      let department = await Department.findByIdAndUpdate(id, {
         $set: {
           name: name,
           api_key: api_key,
@@ -87,10 +87,9 @@ module.exports = class Department {
       };
     }
   }
-
   async update_department_contct(id, contact_name, contact_email, contact_phone) {
     try {
-      let department = await DepartmentModel.findByIdAndUpdate(id, {
+      let department = await Department.findByIdAndUpdate(id, {
         $set: {
           contact_name: contact_name,
           contact_email: contact_email,
@@ -110,9 +109,10 @@ module.exports = class Department {
       };
     }
   }
+
   async delete_department(id) {
     try {
-      let department = await DepartmentModel.deleteOne({ _id: id });
+      let department = await Department.deleteOne({ _id: id });
 
       return {
         result: true,
@@ -128,7 +128,7 @@ module.exports = class Department {
   }
   async search_department(name) {
     try {
-      let departments = await DepartmentModel.find({
+      let departments = await Department.find({
         name: { $regex: ".*" + name + ".*" },
       });
 

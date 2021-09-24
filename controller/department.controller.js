@@ -2,6 +2,7 @@ const Response = require("../services/restapi/status");
 const DepartmentModel = require("../model/instance/department.model");
 let Validator = require("validatorjs");
 
+//  Get All Depatrtments
 exports.get_all_departments = async (req, res) => {
   let department = new DepartmentModel();
   let all_departments = await department.all_departments();
@@ -18,7 +19,7 @@ exports.get_all_departments = async (req, res) => {
     });
   }
 };
-
+//  Get  Depatrtments by id
 exports.get_department = async (req, res) => {
   let department_id = req.params["id"];
   let department = new DepartmentModel();
@@ -36,7 +37,7 @@ exports.get_department = async (req, res) => {
     });
   }
 };
-
+//  Get  Depatrtments contact by id
 exports.get_contact = async (req, res) => {
   let department_id = req.params["id"];
   let department = new DepartmentModel();
@@ -54,7 +55,7 @@ exports.get_contact = async (req, res) => {
     });
   }
 };
-
+//  Post new  Depatrtments @param: name , api_key
 exports.new_department = async (req, res) => {
   let validation = new Validator(
     {
@@ -89,7 +90,7 @@ exports.new_department = async (req, res) => {
     }
   }
 };
-
+//  Post Update  Depatrtments @param: id , name , api_key
 exports.update_info = async (req, res) => {
   let validation = new Validator(
     {
@@ -125,7 +126,7 @@ exports.update_info = async (req, res) => {
     }
   }
 };
-
+//  Post updat  Depatrtments contact @param: id , contact_name , contact_email , contact_phone
 exports.update_contact = async (req, res) => {
   let validation = new Validator(
     {
@@ -163,7 +164,7 @@ exports.update_contact = async (req, res) => {
     }
   }
 };
-
+//  Delete   Depatrtment  @param: id
 exports.delete_department = async (req, res) => {
   let department_id = req.params["id"];
   let department = new DepartmentModel();
@@ -180,7 +181,7 @@ exports.delete_department = async (req, res) => {
     });
   }
 };
-
+//  Get search Depatrtment  @param: name  -> Like * name *
 exports.search_department = async (req, res) => {
   let department_name = req.params["name"];
   let department = new DepartmentModel();

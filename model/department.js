@@ -32,6 +32,11 @@ const DepartmentSchema = new Schema(
       required: false,
       default: null,
     },
+    more_info: {
+      type: Array,
+      default: {},
+      required: false,
+    },
   },
   {
     timestamps: true,
