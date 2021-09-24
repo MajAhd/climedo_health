@@ -29,8 +29,8 @@ exports.post_department_more_info = async (req, res) => {
   let department = new DepartmentMoreInfoModel(department_id);
   let response = [];
   for (var key in new_infos) {
-    let info_name = key.toLowerCase();
-    let info_value = new_infos[key].toLowerCase();
+    let info_name = key;
+    let info_value = new_infos[key];
     let more_info = await department.more_info(info_name, info_value);
     response.push(more_info);
   }
