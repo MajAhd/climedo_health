@@ -5,6 +5,10 @@
 - npm run start
 - npm run test
 
+# Api 
+- import departments.api_collection to postman or swagger 
+
+
 # Convintions
 
 ## Name

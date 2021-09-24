@@ -31,7 +31,6 @@ module.exports = class DepartmentModel {
       };
     }
   }
-
   async get_department_contact(id) {
     try {
       let department = await Department.findById(id).select(["contact_name", "contact_email", "contact_phone"]);
@@ -50,7 +49,7 @@ module.exports = class DepartmentModel {
   async new_department(name, api_key) {
     try {
       let department = new Department({
-        name: name,
+        name: name.toLowerCase(),
         api_key: api_key,
       });
 
@@ -68,17 +67,21 @@ module.exports = class DepartmentModel {
   }
   async update_department(id, name, api_key) {
     try {
-      let department = await Department.findByIdAndUpdate(id, {
-        $set: {
-          name: name,
-          api_key: api_key,
-        },
-      });
-
-      return {
-        result: true,
-        data: department,
-      };
+      let department = await this.get_department(id);
+      if (department.result && department.data != null) {
+        department.data.name = name.toLowerCase();
+        department.data.api_key = api_key;
+        department.data.save();
+        return {
+          result: true,
+          data: department.data,
+        };
+      } else {
+        return {
+          result: false,
+          msg: "department not found!",
+        };
+      }
     } catch (e) {
       Logger.log("error", e);
       return {
@@ -89,18 +92,22 @@ module.exports = class DepartmentModel {
   }
   async update_department_contct(id, contact_name, contact_email, contact_phone) {
     try {
-      let department = await Department.findByIdAndUpdate(id, {
-        $set: {
-          contact_name: contact_name,
-          contact_email: contact_email,
-          contact_phone: contact_phone,
-        },
-      });
-
-      return {
-        result: true,
-        data: department,
-      };
+      let department = await this.get_department(id);
+      if (department.result && department.data != null) {
+        department.data.contact_name = contact_name;
+        department.data.contact_email = contact_email;
+        department.data.contact_phone = contact_phone;
+        department.data.save();
+        return {
+          result: true,
+          data: department.data,
+        };
+      } else {
+        return {
+          result: false,
+          msg: "department not found!",
+        };
+      }
     } catch (e) {
       Logger.log("error", e);
       return {
@@ -129,7 +136,7 @@ module.exports = class DepartmentModel {
   async search_department(name) {
     try {
       let departments = await Department.find({
-        name: { $regex: ".*" + name + ".*" },
+        name: { $regex: ".*" + name.toLowerCase() + ".*" },
       });
 
       return {

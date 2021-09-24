@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "660b7f83-a05b-44ae-9d89-6671f0f50863",
+		"name": "departments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Departments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contact_name",
+							"value": "John",
+							"type": "text"
+						},
+						{
+							"key": "contact_email",
+							"value": "john@climed.com",
+							"type": "text"
+						},
+						{
+							"key": "contact_phone",
+							"value": "+123232323",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/department",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"department"
+					]
+				},
+				"description": "all departments"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Department",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contact_name",
+							"value": "John",
+							"type": "text"
+						},
+						{
+							"key": "contact_email",
+							"value": "john@climed.com",
+							"type": "text"
+						},
+						{
+							"key": "contact_phone",
+							"value": "+123232323",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/department/614de6c7366b9ba29ee6e09a",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"department",
+						"614de6c7366b9ba29ee6e09a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Department",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Cardiology",
+							"type": "text"
+						},
+						{
+							"key": "api_key",
+							"value": "api-key-sample",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/department",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"department"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Department",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Cardiology update",
+							"type": "text"
+						},
+						{
+							"key": "api_key",
+							"value": "api-key-sample",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/department/614df88c4d145d93193615cf",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"department",
+						"614df88c4d145d93193615cf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Department Contact",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contact_name",
+							"value": "John",
+							"type": "text"
+						},
+						{
+							"key": "contact_email",
+							"value": "john@clmedo.com",
+							"type": "text"
+						},
+						{
+							"key": "contact_phone",
+							"value": "+1232332323",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/department/614df88c4d145d93193615cf/contact",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"department",
+						"614df88c4d145d93193615cf",
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Department Contact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contact_name",
+							"value": "John",
+							"type": "text"
+						},
+						{
+							"key": "contact_email",
+							"value": "john@clmedo.com",
+							"type": "text"
+						},
+						{
+							"key": "contact_phone",
+							"value": "+1232332323",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/department/614df88c4d145d93193615cf/contact",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"department",
+						"614df88c4d145d93193615cf",
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Department Search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contact_name",
+							"value": "John",
+							"type": "text"
+						},
+						{
+							"key": "contact_email",
+							"value": "john@clmedo.com",
+							"type": "text"
+						},
+						{
+							"key": "contact_phone",
+							"value": "+1232332323",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/department/search/cardio",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"department",
+						"search",
+						"cardio"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
