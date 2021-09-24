@@ -5,6 +5,7 @@ const Cors = require("./restapi/cors");
 const app = express();
 // routes
 const HomeRoutes = require("../routes/home.route");
+const DepartmentRoutes = require("../routes/department.route");
 // App usages
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(Cors);
 // routes usages
 app.use(HomeRoutes);
+app.use(DepartmentRoutes);
 app.use("/public", express.static(path.join(__dirname, "public")));
 
 // Error Pages

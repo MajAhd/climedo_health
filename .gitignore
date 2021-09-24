@@ -11,10 +11,6 @@ logs
 
 # production
 /build
-
-.env
-/.env
-
 # misc
 .DS_Store
 .env.local

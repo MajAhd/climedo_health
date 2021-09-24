@@ -1,7 +1,7 @@
 const Response = require("../services/restapi/status");
 exports.HomePage = async (req, res) => {
   let data = {
-    name: "Todo Api",
+    name: "Climedo Health Api",
   };
   Response.ApiRes(res, {
     status: 200,
