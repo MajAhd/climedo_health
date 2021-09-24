@@ -187,7 +187,8 @@ exports.search_department = async (req, res) => {
   if (department_info.result) {
     Response.ApiRes(res, {
       status: 200,
-      msg: department_info.data,
+      msg: "search department",
+      data: department_info.data,
     });
   } else {
     Response.ApiRes(res, {
