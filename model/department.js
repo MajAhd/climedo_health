@@ -13,29 +13,14 @@ const DepartmentSchema = new Schema(
       type: String,
       required: true,
     },
-    contact_name: {
-      type: String,
-      required: false,
-      default: null,
-      max: 128,
-      min: 3,
-    },
-    contact_email: {
-      type: String,
-      default: null,
-      max: 255,
-      required: false,
-    },
-    contact_phone: {
-      type: String,
-      max: 50,
-      required: false,
-      default: null,
-    },
     more_info: {
       type: Array,
-      default: {},
       required: false,
+      default: {
+        contact_name: null,
+        contact_email: null,
+        contact_phone: null,
+      },
     },
   },
   {

@@ -15,23 +15,7 @@
 				"header": [],
 				"body": {
 					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "contact_name",
-							"value": "John",
-							"type": "text"
-						},
-						{
-							"key": "contact_email",
-							"value": "john@climed.com",
-							"type": "text"
-						},
-						{
-							"key": "contact_phone",
-							"value": "+123232323",
-							"type": "text"
-						}
-					]
+					"urlencoded": []
 				},
 				"url": {
 					"raw": "http://127.0.0.1:3000/api/department",
@@ -62,26 +46,10 @@
 				"header": [],
 				"body": {
 					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "contact_name",
-							"value": "John",
-							"type": "text"
-						},
-						{
-							"key": "contact_email",
-							"value": "john@climed.com",
-							"type": "text"
-						},
-						{
-							"key": "contact_phone",
-							"value": "+123232323",
-							"type": "text"
-						}
-					]
+					"urlencoded": []
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3000/api/department/614de6c7366b9ba29ee6e09a",
+					"raw": "http://127.0.0.1:3000/api/department/614e1c488b64665e49d919fb",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -93,7 +61,7 @@
 					"path": [
 						"api",
 						"department",
-						"614de6c7366b9ba29ee6e09a"
+						"614e1c488b64665e49d919fb"
 					]
 				}
 			},
@@ -158,7 +126,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3000/api/department/614df88c4d145d93193615cf",
+					"raw": "http://127.0.0.1:3000/api/department/614e27e4fce39172b59fbe2f",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -170,100 +138,7 @@
 					"path": [
 						"api",
 						"department",
-						"614df88c4d145d93193615cf"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Department Contact",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "contact_name",
-							"value": "John",
-							"type": "text"
-						},
-						{
-							"key": "contact_email",
-							"value": "john@clmedo.com",
-							"type": "text"
-						},
-						{
-							"key": "contact_phone",
-							"value": "+1232332323",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://127.0.0.1:3000/api/department/614df88c4d145d93193615cf/contact",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"department",
-						"614df88c4d145d93193615cf",
-						"contact"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Department Contact",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "contact_name",
-							"value": "John",
-							"type": "text"
-						},
-						{
-							"key": "contact_email",
-							"value": "john@clmedo.com",
-							"type": "text"
-						},
-						{
-							"key": "contact_phone",
-							"value": "+1232332323",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://127.0.0.1:3000/api/department/614df88c4d145d93193615cf/contact",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"department",
-						"614df88c4d145d93193615cf",
-						"contact"
+						"614e27e4fce39172b59fbe2f"
 					]
 				}
 			},
@@ -312,6 +187,50 @@
 						"department",
 						"search",
 						"cardio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Department",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contact_name",
+							"value": "John",
+							"type": "text"
+						},
+						{
+							"key": "contact_email",
+							"value": "john@clmedo.com",
+							"type": "text"
+						},
+						{
+							"key": "contact_phone",
+							"value": "+1232332323",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/department/614e279fe2b5022f83d4e525",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"department",
+						"614e279fe2b5022f83d4e525"
 					]
 				}
 			},

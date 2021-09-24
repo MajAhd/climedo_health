@@ -19,6 +19,7 @@ exports.get_all_departments = async (req, res) => {
     });
   }
 };
+
 //  Get  Depatrtments by id
 exports.get_department = async (req, res) => {
   let department_id = req.params["id"];
@@ -37,24 +38,7 @@ exports.get_department = async (req, res) => {
     });
   }
 };
-//  Get  Depatrtments contact by id
-exports.get_contact = async (req, res) => {
-  let department_id = req.params["id"];
-  let department = new DepartmentModel();
-  let department_info = await department.get_department_contact(department_id);
-  if (department_info.result) {
-    Response.ApiRes(res, {
-      status: 200,
-      msg: "Get Department contact info",
-      data: department_info.data,
-    });
-  } else {
-    Response.ApiRes(res, {
-      status: 500,
-      msg: department_info.msg,
-    });
-  }
-};
+
 //  Post new  Depatrtments @param: name , api_key
 exports.new_department = async (req, res) => {
   let validation = new Validator(
@@ -79,7 +63,7 @@ exports.new_department = async (req, res) => {
     if (department_info.result) {
       Response.ApiRes(res, {
         status: 200,
-        msg: "Department Saved",
+        msg: "New Department Saved",
         data: department_info.data,
       });
     } else {
@@ -90,6 +74,7 @@ exports.new_department = async (req, res) => {
     }
   }
 };
+
 //  Post Update  Depatrtments @param: id , name , api_key
 exports.update_info = async (req, res) => {
   let validation = new Validator(
@@ -126,44 +111,7 @@ exports.update_info = async (req, res) => {
     }
   }
 };
-//  Post updat  Depatrtments contact @param: id , contact_name , contact_email , contact_phone
-exports.update_contact = async (req, res) => {
-  let validation = new Validator(
-    {
-      contact_name: req.body.contact_name,
-      contact_email: req.body.contact_email,
-      contact_phone: req.body.contact_phone,
-    },
-    {
-      contact_name: "required|string|min:3|max:128",
-      contact_email: "required|string|max:255",
-      contact_phone: "required|string|max:50",
-    }
-  );
-  if (validation.fails()) {
-    Response.ApiRes(res, {
-      status: 400,
-      msg: "validation Error",
-      data: validation.errors.all(),
-    });
-  } else {
-    let department_id = req.params["id"];
-    let department = new DepartmentModel();
-    let department_info = await department.update_department_contct(department_id, req.body.contact_name, req.body.contact_email, req.body.contact_phone);
-    if (department_info.result) {
-      Response.ApiRes(res, {
-        status: 200,
-        msg: "Department info Updated",
-        data: department_info.data,
-      });
-    } else {
-      Response.ApiRes(res, {
-        status: 500,
-        msg: department_info.msg,
-      });
-    }
-  }
-};
+
 //  Delete   Depatrtment  @param: id
 exports.delete_department = async (req, res) => {
   let department_id = req.params["id"];
@@ -173,6 +121,7 @@ exports.delete_department = async (req, res) => {
     Response.ApiRes(res, {
       status: 200,
       msg: department_info.data,
+      data: [],
     });
   } else {
     Response.ApiRes(res, {
@@ -181,6 +130,7 @@ exports.delete_department = async (req, res) => {
     });
   }
 };
+
 //  Get search Depatrtment  @param: name  -> Like * name *
 exports.search_department = async (req, res) => {
   let department_name = req.params["name"];

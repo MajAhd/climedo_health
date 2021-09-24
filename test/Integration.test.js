@@ -23,11 +23,4 @@ describe("Api tests", () => {
       .expect(200)
       .expect({ msg: "search department" });
   });
-  it("get /api/departemnt/:id/contact", async () => {
-    request(app)
-      .get(DepartmentrUrl + "/614de6c7366b9ba29ee6e09a/contact")
-      .expect("Content-Type", /json/)
-      .expect(200)
-      .expect({ msg: "Get Department contact info" });
-  });
 });
