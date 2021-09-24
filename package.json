@@ -1,0 +1,46 @@
+{
+  "name": "climedo",
+  "version": "1.0.0",
+  "description": "Climedo Health Code Challenge",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "env mocha -r ts-node/register 'test/**/*.js'  --exit --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MajAhd/climedo_health"
+  },
+  "keywords": [
+    "ClimedoHealth",
+    "Majid"
+  ],
+  "author": "Majid Ahmaditabar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MajAhd/climedo_health/issues"
+  },
+  "homepage": "https://github.com/MajAhd/climedo_health#readme",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "bcryptjs": "^2.4.3",
+    "color-string": "^1.6.0",
+    "compression": "^1.7.4",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "ioredis": "^4.27.9",
+    "mongoose": "^6.0.6",
+    "multer": "^1.4.3",
+    "node-fetch": "^3.0.0",
+    "tokgen": "^1.0.0",
+    "ts-node": "^10.2.1",
+    "validatorjs": "^3.22.1",
+    "winston": "^3.3.3",
+    "ws": "^7.5.5"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.1",
+    "nodemon": "^2.0.12"
+  }
+}
