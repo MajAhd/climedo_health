@@ -6,6 +6,7 @@ const app = express();
 // routes
 const HomeRoutes = require("../routes/home.route");
 const DepartmentRoutes = require("../routes/department.route");
+const DepartmentMoreInfoRoutes = require("../routes/department.moreinfo.route");
 // App usages
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
@@ -15,6 +16,7 @@ app.use(Cors);
 // routes usages
 app.use(HomeRoutes);
 app.use(DepartmentRoutes);
+app.use(DepartmentMoreInfoRoutes);
 app.use("/public", express.static(path.join(__dirname, "public")));
 
 // Error Pages

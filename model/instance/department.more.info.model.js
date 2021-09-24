@@ -1,13 +1,16 @@
+const Department = require("../department");
+const Logger = require("../../config/logger");
+
 module.exports = class DepartmentMoreInfoModel {
   constructor(department_id) {
     this.department_id = department_id;
   }
   async get_info() {
     try {
-      let department = await DepartmentModel.findById(id).select("more_info");
+      // let department = await Department.findById(this.id);
       return {
         result: true,
-        data: department,
+        data: this.id,
       };
     } catch (e) {
       Logger.log("error", e);

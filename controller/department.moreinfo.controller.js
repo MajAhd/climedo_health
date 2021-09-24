@@ -3,7 +3,7 @@ const DepartmentMoreInfoModel = require("../model/instance/department.more.info.
 let Validator = require("validatorjs");
 
 //  Get All Depatrtments More Info
-exports.get_all_departments = async (req, res) => {
+exports.get_department_more_info = async (req, res) => {
   let department_id = req.params["id"];
   let department = new DepartmentMoreInfoModel(department_id);
   let more_info = await department.get_info();
