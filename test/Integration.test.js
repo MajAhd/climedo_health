@@ -1,26 +1,41 @@
 const expect = require("chai").expect;
 const request = require("supertest");
-const express = require("express");
-const app = express();
+let app = require("../services/app");
 const DepartmentrUrl = process.env.API_V1 + "department";
 describe("Api tests", () => {
   it("get /api/departemnt", async () => {
-    request(app).get(DepartmentrUrl).expect("Content-Type", /json/).expect(200).expect({ msg: "Get All Departments" });
+    return request(app)
+      .get(DepartmentrUrl)
+      .then(function (response) {
+        expect(response.status).to.equal(200);
+        expect(response.type).to.equal("application/json");
+        expect(response.body).to.be.an("object");
+        expect(response.body.status).to.equal(200);
+        expect(response.body.msg).to.equal("Get All Departments");
+      });
   });
 
   it("get /api/departemnt/:id", async () => {
-    request(app)
+    return request(app)
       .get(DepartmentrUrl + "/614de6c7366b9ba29ee6e09a")
-      .expect("Content-Type", /json/)
-      .expect(200)
-      .expect({ msg: "Get Department info" });
+      .then(function (response) {
+        expect(response.status).to.equal(200);
+        expect(response.type).to.equal("application/json");
+        expect(response.body).to.be.an("object");
+        expect(response.body.status).to.equal(200);
+        expect(response.body.msg).to.equal("Get Department info");
+      });
   });
 
   it("get /api/departemnt/search/:name", async () => {
-    request(app)
-      .get(DepartmentrUrl + "/onco")
-      .expect("Content-Type", /json/)
-      .expect(200)
-      .expect({ msg: "search department" });
+    return request(app)
+      .get(DepartmentrUrl + "/search/onco")
+      .then(function (response) {
+        expect(response.status).to.equal(200);
+        expect(response.type).to.equal("application/json");
+        expect(response.body).to.be.an("object");
+        expect(response.body.status).to.equal(200);
+        expect(response.body.msg).to.equal("search department");
+      });
   });
 });
