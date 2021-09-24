@@ -36,6 +36,24 @@ exports.get_department = async (req, res) => {
   }
 };
 
+exports.get_contact = async (req, res) => {
+  let department_id = req.params["id"];
+  let department = new DepartmentModel();
+  let department_info = await department.get_department_contact(department_id);
+  if (department_info.result) {
+    Response.ApiRes(res, {
+      status: 200,
+      msg: "Get Department info",
+      data: department_info.data,
+    });
+  } else {
+    Response.ApiRes(res, {
+      status: 500,
+      msg: department_info.msg,
+    });
+  }
+};
+
 exports.new_department = async (req, res) => {
   let validation = new Validator(
     {
@@ -71,7 +89,7 @@ exports.new_department = async (req, res) => {
   }
 };
 
-exports.update_department = async (req, res) => {
+exports.update_info = async (req, res) => {
   let validation = new Validator(
     {
       name: req.body.name,
@@ -92,6 +110,44 @@ exports.update_department = async (req, res) => {
     let department_id = req.params["id"];
     let department = new DepartmentModel();
     let department_info = await department.update_department(department_id, req.body.name, req.body.api_key);
+    if (department_info.result) {
+      Response.ApiRes(res, {
+        status: 200,
+        msg: "Department info Updated",
+        data: department_info.data,
+      });
+    } else {
+      Response.ApiRes(res, {
+        status: 500,
+        msg: department_info.msg,
+      });
+    }
+  }
+};
+
+exports.update_contact = async (req, res) => {
+  let validation = new Validator(
+    {
+      contact_name: req.body.contact_name,
+      contact_email: req.body.contact_email,
+      contact_phone: req.body.contact_phone,
+    },
+    {
+      contact_name: "required|string|min:3|max:128",
+      contact_email: "required|string|max:255",
+      contact_phone: "required|string|max:50",
+    }
+  );
+  if (validation.fails()) {
+    Response.ApiRes(res, {
+      status: 400,
+      msg: "validation Error",
+      data: validation.errors.all(),
+    });
+  } else {
+    let department_id = req.params["id"];
+    let department = new DepartmentModel();
+    let department_info = await department.update_department_contct(department_id, req.body.contact_name, req.body.contact_email, req.body.contact_phone);
     if (department_info.result) {
       Response.ApiRes(res, {
         status: 200,

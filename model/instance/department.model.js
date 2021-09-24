@@ -31,6 +31,22 @@ module.exports = class Department {
       };
     }
   }
+
+  async get_department_contact(id) {
+    try {
+      let department = await DepartmentModel.findById(id).select(["contact_name", "contact_email", "contact_phone"]);
+      return {
+        result: true,
+        data: department,
+      };
+    } catch (e) {
+      Logger.log("error", e);
+      return {
+        result: false,
+        msg: "internal server error",
+      };
+    }
+  }
   async new_department(name, api_key) {
     try {
       let department = new DepartmentModel({
@@ -56,6 +72,29 @@ module.exports = class Department {
         $set: {
           name: name,
           api_key: api_key,
+        },
+      });
+
+      return {
+        result: true,
+        data: department,
+      };
+    } catch (e) {
+      Logger.log("error", e);
+      return {
+        result: false,
+        msg: "internal server error",
+      };
+    }
+  }
+
+  async update_department_contct(id, contact_name, contact_email, contact_phone) {
+    try {
+      let department = await DepartmentModel.findByIdAndUpdate(id, {
+        $set: {
+          contact_name: contact_name,
+          contact_email: contact_email,
+          contact_phone: contact_phone,
         },
       });
 
