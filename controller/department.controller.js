@@ -1,6 +1,7 @@
 const Response = require("../services/restapi/status");
 const DepartmentModel = require("../model/instance/department.model");
 let Validator = require("validatorjs");
+
 exports.get_all_departments = async (req, res) => {
   let department = new DepartmentModel();
   let all_departments = await department.all_departments();
@@ -43,7 +44,7 @@ exports.get_contact = async (req, res) => {
   if (department_info.result) {
     Response.ApiRes(res, {
       status: 200,
-      msg: "Get Department info",
+      msg: "Get Department contact info",
       data: department_info.data,
     });
   } else {
