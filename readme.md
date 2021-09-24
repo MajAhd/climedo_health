@@ -25,3 +25,7 @@
 - middleware
 - routes
 - services : independed part of application (socket , rabbitmq and etc)
+
+- Name: Majid AhmadiTabar
+- Email: mjd.ahd.tbr@gmail.com
+- Position: Backend Engineer (f/m/x) position
