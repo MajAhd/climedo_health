@@ -1,5 +1,6 @@
 const Response = require("../services/restapi/status");
 const DepartmentModel = require("../model/instance/department.model");
+let Validator = require("validatorjs");
 exports.get_all_departments = async (req, res) => {
   let department = new DepartmentModel();
   let all_departments = await department.all_departments();
@@ -21,7 +22,7 @@ exports.get_department = async (req, res) => {
   let department_id = req.params["id"];
   let department = new DepartmentModel();
   let department_info = await department.get_department(department_id);
-  if (all_departments.result) {
+  if (department_info.result) {
     Response.ApiRes(res, {
       status: 200,
       msg: "Get Department info",
@@ -50,12 +51,12 @@ exports.new_department = async (req, res) => {
     Response.ApiRes(res, {
       status: 400,
       msg: "validation Error",
-      validations: validation.errors.all(),
+      data: validation.errors.all(),
     });
   } else {
     let department = new DepartmentModel();
     let department_info = await department.new_department(req.body.name, req.body.api_key);
-    if (all_departments.result) {
+    if (department_info.result) {
       Response.ApiRes(res, {
         status: 200,
         msg: "Department Saved",
@@ -85,13 +86,13 @@ exports.update_department = async (req, res) => {
     Response.ApiRes(res, {
       status: 400,
       msg: "validation Error",
-      validations: validation.errors.all(),
+      data: validation.errors.all(),
     });
   } else {
     let department_id = req.params["id"];
     let department = new DepartmentModel();
     let department_info = await department.update_department(department_id, req.body.name, req.body.api_key);
-    if (all_departments.result) {
+    if (department_info.result) {
       Response.ApiRes(res, {
         status: 200,
         msg: "Department info Updated",
@@ -110,7 +111,7 @@ exports.delete_department = async (req, res) => {
   let department_id = req.params["id"];
   let department = new DepartmentModel();
   let department_info = await department.delete_department(department_id);
-  if (all_departments.result) {
+  if (department_info.result) {
     Response.ApiRes(res, {
       status: 200,
       msg: department_info.data,
@@ -124,12 +125,18 @@ exports.delete_department = async (req, res) => {
 };
 
 exports.search_department = async (req, res) => {
-  let data = {
-    name: "Todo Api",
-  };
-  Response.ApiRes(res, {
-    status: 200,
-    msg: undefined,
-    data: data,
-  });
+  let department_name = req.params["name"];
+  let department = new DepartmentModel();
+  let department_info = await department.search_department(department_name);
+  if (department_info.result) {
+    Response.ApiRes(res, {
+      status: 200,
+      msg: department_info.data,
+    });
+  } else {
+    Response.ApiRes(res, {
+      status: 500,
+      msg: department_info.msg,
+    });
+  }
 };

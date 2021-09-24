@@ -1,6 +1,7 @@
 class DepartmentContac {
-  new_contact() {}
-  delete_contact() {}
+  constructor(department_id) {
+    this.department_id = department_id;
+  }
   update_contct() {}
   get_contact() {}
 }

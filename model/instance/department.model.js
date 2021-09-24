@@ -73,7 +73,7 @@ module.exports = class Department {
   }
   async delete_department(id) {
     try {
-      let department = await DepartmentModel.deleteOne(id);
+      let department = await DepartmentModel.deleteOne({ _id: id });
 
       return {
         result: true,
